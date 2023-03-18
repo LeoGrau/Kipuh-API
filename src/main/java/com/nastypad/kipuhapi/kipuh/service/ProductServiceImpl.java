@@ -7,6 +7,7 @@ import com.nastypad.kipuhapi.shared.exception.ResourceNotFoundException;
 import com.nastypad.kipuhapi.shared.exception.ResourceValidationException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -54,5 +55,13 @@ public class ProductServiceImpl implements ProductService {
         Product existingProduct = productRepository.findById(id).get();
         existingProduct.setProductName(updatedProduct.getProductName());
         return productRepository.save(existingProduct);
+    }
+
+    @Override
+    public ResponseEntity<?> delete(Long id) {
+        return productRepository.findById(id).map(product -> {
+            productRepository.delete(product);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException(entity, id));
     }
 }

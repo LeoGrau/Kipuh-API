@@ -7,6 +7,7 @@ import com.nastypad.kipuhapi.kipuh.resource.show.ProductResource;
 import com.nastypad.kipuhapi.kipuh.resource.update.UpdateProductResource;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.hibernate.sql.Update;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +42,11 @@ public class ProductController {
     @PutMapping("{id}")
     public ProductResource updateProduct(@PathVariable Long id, @RequestBody UpdateProductResource productResource) {
         return productMapper.toResource(productService.update(id, productMapper.updateResourceToModel(productResource)));
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        return productService.delete(id);
     }
 
 }
