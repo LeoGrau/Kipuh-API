@@ -1,4 +1,4 @@
-package com.nastypad.kipuhapi.kipuh.domain.model.service;
+package com.nastypad.kipuhapi.kipuh.domain.service;
 
 
 import com.nastypad.kipuhapi.kipuh.domain.model.entity.Product;

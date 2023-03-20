@@ -7,7 +7,7 @@ import lombok.*;
 @With
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductResource {
-    private Long productId;
-    private String productName;
+public class StoreResource {
+    private long storeId;
+    private String storeName;
 }

@@ -1,12 +1,11 @@
 package com.nastypad.kipuhapi.kipuh.api.rest;
 
-import com.nastypad.kipuhapi.kipuh.domain.model.service.ProductService;
+import com.nastypad.kipuhapi.kipuh.domain.service.ProductService;
 import com.nastypad.kipuhapi.kipuh.mapping.mappers.ProductMapper;
 import com.nastypad.kipuhapi.kipuh.resource.create.CreateProductResource;
 import com.nastypad.kipuhapi.kipuh.resource.show.ProductResource;
 import com.nastypad.kipuhapi.kipuh.resource.update.UpdateProductResource;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.hibernate.sql.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

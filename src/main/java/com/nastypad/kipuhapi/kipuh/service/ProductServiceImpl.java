@@ -1,8 +1,8 @@
 package com.nastypad.kipuhapi.kipuh.service;
 
 import com.nastypad.kipuhapi.kipuh.domain.model.entity.Product;
-import com.nastypad.kipuhapi.kipuh.domain.model.repository.ProductRepository;
-import com.nastypad.kipuhapi.kipuh.domain.model.service.ProductService;
+import com.nastypad.kipuhapi.kipuh.domain.repository.ProductRepository;
+import com.nastypad.kipuhapi.kipuh.domain.service.ProductService;
 import com.nastypad.kipuhapi.shared.exception.ResourceNotFoundException;
 import com.nastypad.kipuhapi.shared.exception.ResourceValidationException;
 import jakarta.validation.ConstraintViolation;
@@ -32,8 +32,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getById(Long id) {
-        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(entity, id));
+    public Product getById(Long productId) {
+        return productRepository.findByProductId(productId).orElseThrow(() -> new ResourceNotFoundException(entity, productId));
     }
 
     @Override
@@ -45,23 +45,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Long id, Product updatedProduct) {
+    public Product update(Long productId, Product updatedProduct) {
         Set<ConstraintViolation<Product>> violations = validator.validate(updatedProduct);
         if(!violations.isEmpty())
             throw new ResourceValidationException(entity, violations);
-        if(!productRepository.existsById(id))
+        if(!productRepository.existsByProductId(productId))
             throw new ResourceValidationException("Product does not exist.");
 
-        Product existingProduct = productRepository.findById(id).get();
+        Product existingProduct = productRepository.findByProductId(productId).get();
         existingProduct.setProductName(updatedProduct.getProductName());
         return productRepository.save(existingProduct);
     }
 
     @Override
-    public ResponseEntity<?> delete(Long id) {
-        return productRepository.findById(id).map(product -> {
+    public ResponseEntity<?> delete(Long productId) {
+        return productRepository.findByProductId(productId).map(product -> {
             productRepository.delete(product);
             return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException(entity, id));
+        }).orElseThrow(() -> new ResourceNotFoundException(entity, productId));
     }
 }

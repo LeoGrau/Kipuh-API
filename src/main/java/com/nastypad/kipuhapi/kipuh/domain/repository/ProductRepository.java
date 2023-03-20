@@ -1,4 +1,4 @@
-package com.nastypad.kipuhapi.kipuh.domain.model.repository;
+package com.nastypad.kipuhapi.kipuh.domain.repository;
 
 import com.nastypad.kipuhapi.kipuh.domain.model.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAll();
-    Optional<Product> findById(Long id);
-    Boolean existsById(long id);
+    Optional<Product> findByProductId(Long productId);
+    Boolean existsByProductId(Long productId);
 }
