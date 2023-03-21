@@ -22,15 +22,15 @@ public class ProductMapper implements Serializable {
         return mapper.mapList(products, ProductResource.class);
     }
 
-    public Product toModel(ProductResource productResource) {
-        return mapper.map(productResource, Product.class);
-    }
-
     public Product createResourceToModel(CreateProductResource createProductResource) {
         return mapper.map(createProductResource, Product.class);
     }
 
     public Product updateResourceToModel(UpdateProductResource updateProductResource) {
         return mapper.map(updateProductResource, Product.class);
+    }
+
+    public Product toModel(ProductResource productResource) {
+        return mapper.map(productResource, Product.class);
     }
 }

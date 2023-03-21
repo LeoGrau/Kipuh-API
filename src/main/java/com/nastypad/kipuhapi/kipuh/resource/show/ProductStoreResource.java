@@ -7,8 +7,9 @@ import lombok.*;
 @With
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductResource {
-    private Long productId;
+public class ProductStoreResource {
     private String productName;
+    private String storeName;
     private float price;
+
 }

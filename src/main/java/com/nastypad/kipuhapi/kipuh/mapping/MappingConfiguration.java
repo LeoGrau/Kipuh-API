@@ -1,6 +1,7 @@
 package com.nastypad.kipuhapi.kipuh.mapping;
 
 import com.nastypad.kipuhapi.kipuh.mapping.mappers.ProductMapper;
+import com.nastypad.kipuhapi.kipuh.mapping.mappers.ProductStoreMapper;
 import com.nastypad.kipuhapi.kipuh.mapping.mappers.StoreMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,4 +17,7 @@ public class MappingConfiguration {
     public StoreMapper storeMapper() {
         return new StoreMapper();
     }
+
+    @Bean
+    public ProductStoreMapper productStoreMapper() { return new ProductStoreMapper(); }
 }

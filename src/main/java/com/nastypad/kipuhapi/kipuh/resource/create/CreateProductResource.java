@@ -8,5 +8,5 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateProductResource {
-    private String name;
+    private String productName;
 }

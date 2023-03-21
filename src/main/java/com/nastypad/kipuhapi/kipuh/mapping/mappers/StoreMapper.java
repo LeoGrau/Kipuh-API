@@ -26,16 +26,16 @@ public class StoreMapper implements Serializable {
         return mapper.mapList(stores, StoreResource.class);
     }
 
-    public Store toModel(StoreResource storeResource) {
-        return mapper.map(storeResource, Store.class);
-    }
-
     public Store createResourceToModel(CreateStoreResource createStoreResource) {
         return mapper.map(createStoreResource, Store.class);
     }
 
     public Store updateResourceToModel(UpdateStoreResource updateStoreResource) {
         return mapper.map(updateStoreResource, Store.class);
+    }
+
+    public Store toModel(StoreResource storeResource) {
+        return mapper.map(storeResource, Store.class);
     }
 
 }

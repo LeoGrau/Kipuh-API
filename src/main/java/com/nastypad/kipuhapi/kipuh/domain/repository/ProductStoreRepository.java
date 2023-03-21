@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ProductStoreRepository extends JpaRepository<ProductStore, ProductStoreKey> {
     List<ProductStore> findAll();
     Optional<ProductStore> findById(ProductStoreKey id);
+    boolean existsById(ProductStoreKey id);
 }
