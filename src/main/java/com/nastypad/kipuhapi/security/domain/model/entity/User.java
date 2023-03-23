@@ -1,5 +1,6 @@
 package com.nastypad.kipuhapi.security.domain.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,8 @@ public class User {
     private String firstname;
     private String lastname;
     private String username;
+    @JsonIgnore
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",

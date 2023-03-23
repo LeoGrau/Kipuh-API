@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -31,6 +32,9 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
     @Autowired
     private EnhancedModelMapper mapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -71,6 +75,7 @@ public class UserServiceImpl implements UserService {
                     .withUsername(request.getUsername())
                     .withFirstname(request.getFirstname())
                     .withLastname(request.getLastname())
+                    .withPassword(request.getPassword())
                     .withRoles(roles);
             userRepository.save(user);
             UserResource userResource = mapper.map(user, UserResource.class);
