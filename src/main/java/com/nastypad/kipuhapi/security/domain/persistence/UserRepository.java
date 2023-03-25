@@ -1,4 +1,4 @@
-package com.nastypad.kipuhapi.security.domain.repository;
+package com.nastypad.kipuhapi.security.domain.persistence;
 
 import com.nastypad.kipuhapi.security.domain.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,7 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUserId(Long userId);
-    Optional<User> findByUsername(String username);
-    Boolean existsByUsername(String username);
+
 }

@@ -1,21 +1,22 @@
 package com.nastypad.kipuhapi.security.domain.model.entity;
 
-import com.nastypad.kipuhapi.security.domain.model.enums.RoleEnum;
+import com.nastypad.kipuhapi.security.domain.model.enums.Roles;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Entity
-@Table(name = "roles")
 @Getter
 @Setter
-@AllArgsConstructor
+@Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@With
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
-    private RoleEnum role;
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private Roles roleName;
 }
