@@ -1,4 +1,9 @@
 package com.nastypad.kipuhapi.security.domain.service.communication.request;
 
-public class AuthRequest {
+import lombok.Getter;
+
+@Getter
+public class  AuthRequest {
+    private String username;
+    private String password;
 }
