@@ -31,15 +31,15 @@ public class SecurityConfig {
       return new UserServiceImpl();
    }
 
-   @Bean
-   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-      return http.csrf().disable()
-              .authorizeHttpRequests()
-              .requestMatchers("/**").permitAll()
-              .and()
-              .authorizeHttpRequests().requestMatchers("/products/**")
-              .authenticated().and().formLogin().and().build();
-   }
+//   @Bean
+//   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//      return http.csrf().disable()
+//              .authorizeHttpRequests()
+//              .requestMatchers("/**").permitAll()
+//              .and()
+//              .authorizeHttpRequests().requestMatchers("/products/**")
+//              .authenticated().and().formLogin().and().build();
+//   }
 
    @Bean
    public PasswordEncoder passwordEncoder() {
