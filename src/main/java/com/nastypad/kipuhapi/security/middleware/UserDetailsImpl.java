@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class UserDetailsImpl implements UserDetails {
     private Long userId;
     private String username;
+    private String email;
     private String password;
     private List<GrantedAuthority> authorities;
     @Override
@@ -73,6 +74,7 @@ public class UserDetailsImpl implements UserDetails {
         return new UserDetailsImpl(
                 user.getUserId(),
                 user.getUsername(),
+                user.getEmail(),
                 user.getPassword(),
                 authorities
         );

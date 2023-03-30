@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
-    //ResponseEntity<?> authenticate(AuthRequest request);
-    ResponseEntity<?> register(RegisterRequest request);
     List<User> getAll();
     User findByUserId(String username);
 }

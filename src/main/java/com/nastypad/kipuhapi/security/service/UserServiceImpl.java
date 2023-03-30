@@ -36,12 +36,6 @@ public class UserServiceImpl implements UserService {
 
 
 
-
-    @Override
-    public ResponseEntity<?> register(RegisterRequest request) {
-        return null;
-    }
-
     @Override
     public List<User> getAll() {
         return userRepository.findAll();
@@ -52,8 +46,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("Not found!"));
     }
 
+    //The only thing we need for login is this.
+    // Also, it serves for AuthenticationManager and its authenticate method to find user (AuthServiceImpl)
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //The only thing we need for login is this.
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User not found with username: %s", username)));
         return UserDetailsImpl.build(user);
