@@ -1,6 +1,7 @@
 package com.nastypad.kipuhapi.kipuh.api.rest;
 
 import com.nastypad.kipuhapi.shared.configuration.Project;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,5 +17,10 @@ public class KipuhController {
                 "https://github.com/LeoGrau",
                 "Kipuh!"
         );
+    }
+    @GetMapping(value = "welcome", produces = MediaType.TEXT_HTML_VALUE)
+    public String welcome() {
+        return "<html>\n" + "<header><title>Welcome</title></header>\n" +
+                "<body>\n" + "Hello world\n" + "</body>\n" + "</html>";
     }
 }

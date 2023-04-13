@@ -4,9 +4,13 @@ import com.nastypad.kipuhapi.kipuh.domain.model.entity.ProductStore;
 import com.nastypad.kipuhapi.kipuh.resource.create.CreateProductResource;
 import com.nastypad.kipuhapi.kipuh.resource.create.CreateProductStoreResource;
 import com.nastypad.kipuhapi.kipuh.resource.show.ProductStoreResource;
+import com.nastypad.kipuhapi.security.domain.model.entity.User;
+import com.nastypad.kipuhapi.security.resources.show.UserResource;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.stream.Collectors;
 
 @Configuration("enhancedModelMapperConfiguration")
 public class MappingConfiguration {
@@ -24,7 +28,8 @@ public class MappingConfiguration {
 
         mapper.typeMap(CreateProductStoreResource.class, ProductStore.class).addMappings(
                 _mapper -> {
-                    _mapper.map(createProductStoreResource -> createProductStoreResource.getProductStoreKeyId(), ProductStore::setId);
+                    _mapper.map(CreateProductStoreResource::getProductStoreKeyId, ProductStore::setId);
+                    // _mapper.map(createProductStoreResource -> createProductStoreResource.getProductStoreKeyId(), (destination, value) -> destination.setId((ProductStoreKey) value));
                 }
         );
 

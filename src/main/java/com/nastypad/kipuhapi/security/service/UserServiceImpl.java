@@ -42,11 +42,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserId(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("Not found!"));
+    public User findByUserId(Long userId) {
+        return userRepository.findByUserId(userId).orElseThrow(() -> new ResourceNotFoundException("Not found!"));
     }
 
-    //The only thing we need for login is this.
+    // The only thing we need for login is this.
     // Also, it serves for AuthenticationManager and its authenticate method to find user (AuthServiceImpl)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

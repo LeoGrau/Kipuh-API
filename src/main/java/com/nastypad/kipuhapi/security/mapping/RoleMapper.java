@@ -7,7 +7,6 @@ import com.nastypad.kipuhapi.shared.mapping.EnhancedModelMapper;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,11 +15,18 @@ public class RoleMapper implements Serializable {
     @Autowired
     EnhancedModelMapper mapper;
 
-    Converter<Roles, String> roleToString = new AbstractConverter<Roles, String>() {
+    Converter<Roles, String> rolesToString = new AbstractConverter<Roles, String>() {
 
         @Override
         protected String convert(Roles role) {
             return role == null? null : role.name();
+        }
+    };
+
+    Converter<Role, String> roleToString = new AbstractConverter<Role, String>() {
+        @Override
+        protected String convert(Role role) {
+            return role == null? null : role.getRoleName().name();
         }
     };
 

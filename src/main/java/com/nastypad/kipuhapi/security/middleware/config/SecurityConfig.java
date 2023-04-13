@@ -2,6 +2,7 @@ package com.nastypad.kipuhapi.security.middleware.config;
 
 import com.nastypad.kipuhapi.security.domain.persistence.UserRepository;
 import com.nastypad.kipuhapi.security.domain.service.UserService;
+import com.nastypad.kipuhapi.security.middleware.jwt.JwtHandler;
 import com.nastypad.kipuhapi.security.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

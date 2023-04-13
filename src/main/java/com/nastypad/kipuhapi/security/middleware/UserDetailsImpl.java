@@ -20,7 +20,7 @@ public class UserDetailsImpl implements UserDetails {
     private String username;
     private String email;
     private String password;
-    private List<GrantedAuthority> authorities;
+    private List<GrantedAuthority> authorities; // Here is the connection for Roles in PreAuthorize Annotation
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
